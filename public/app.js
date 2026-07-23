@@ -30,10 +30,35 @@ function renderIdioms() {
   $$(".idiom-card").forEach((card) => card.addEventListener("click", () => openReader(Number(card.dataset.num))));
 }
 function renderCards() {
-  $("#cardGrid").innerHTML = state.data.pages.map((page, index) => {
+  $("#cardGrid").innerHTML = state.data.pages.map((page) => {
     const unlocked = state.cards.has(page.num);
-    return `<article class="reward-card ${unlocked ? "" : "locked"}"><img src="/assets/rewards/card-${index % 3 + 1}.png" alt="${escapeHtml(page.id)}金卡"><p>${escapeHtml(page.id)}</p><span>第${page.num}条 · ${unlocked ? "首次全对" : "尚未获得"}</span>${unlocked ? "" : '<div class="lock">🔒</div>'}</article>`;
+    return `<article class="reward-card ${unlocked ? "" : "locked"}" data-card="${page.num}">
+      <div class="reward-art"><img src="/assets/rewards/${page.num}.jpg" alt="${escapeHtml(page.id)}金卡"><i class="card-shine"></i></div>
+      <p>${escapeHtml(page.id)}</p><span>NHHS №${String(page.num).padStart(3, "0")} · ${unlocked ? "首次全对" : "尚未获得"}</span>
+      ${unlocked ? "" : '<div class="lock">🔒</div>'}</article>`;
   }).join("");
+  bindCardShine();
+}
+function bindCardShine() {
+  $$(".reward-card:not(.locked)").forEach((card) => {
+    const move = (event) => {
+      const point = event.touches?.[0] || event;
+      const rect = card.getBoundingClientRect();
+      const x = Math.max(0, Math.min(100, ((point.clientX - rect.left) / rect.width) * 100));
+      const y = Math.max(0, Math.min(100, ((point.clientY - rect.top) / rect.height) * 100));
+      card.style.setProperty("--shine-x", `${x}%`);
+      card.style.setProperty("--shine-y", `${y}%`);
+      card.style.setProperty("--tilt-x", `${((50 - y) / 18).toFixed(2)}deg`);
+      card.style.setProperty("--tilt-y", `${((x - 50) / 18).toFixed(2)}deg`);
+      card.classList.add("touching");
+    };
+    const reset = () => card.classList.remove("touching");
+    card.addEventListener("pointermove", move);
+    card.addEventListener("pointerleave", reset);
+    card.addEventListener("pointerup", reset);
+    card.addEventListener("touchmove", move, { passive: true });
+    card.addEventListener("touchend", reset);
+  });
 }
 function updateStats() {
   $("#cardCount").textContent = state.cards.size;
@@ -78,7 +103,7 @@ async function submitQuiz(event) {
   try {
     const result = await api("submit-attempt", { method: "POST", body: JSON.stringify({ idiom_num: state.current.num, answers }) });
     hide("#quizModal");
-    $("#resultBody").innerHTML = `${result.awarded ? `<p class="eyebrow" style="text-align:center">恭喜获得新金卡</p><img class="result-card" src="/assets/rewards/card-${state.current.num % 3 + 1}.png" alt="新金卡">` : ""}
+    $("#resultBody").innerHTML = `${result.awarded ? `<p class="eyebrow" style="text-align:center">恭喜获得新金卡</p><img class="result-card" src="/assets/rewards/${state.current.num}.jpg" alt="${escapeHtml(state.current.id)}金卡">` : ""}
       <div class="result-score">${result.score}/${result.total}</div>
       <h2 style="text-align:center">${result.all_correct ? "全部答对！" : result.first_attempt ? "首次挑战已记录" : "继续努力！"}</h2>
       <p style="text-align:center;color:var(--muted)">${result.awarded ? "首次整组全对，金卡已存入收藏。" : result.first_attempt && !result.all_correct ? "这次不能获得金卡，但可以继续练习直到掌握。" : "练习进度已保存。"}</p>
