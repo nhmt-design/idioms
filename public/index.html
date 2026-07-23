@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102c5c">
+  <title>南华熊成语闯关平台</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">南华熊成语闯关</a>
+    <div class="userbar">
+      <span id="userLabel">尚未登录</span>
+      <button id="loginBtn" class="button small">学生登录</button>
+      <button id="logoutBtn" class="button ghost small hidden">退出</button>
+      <a class="button ghost small" href="/teacher.html">教师入口</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">南华中学 · 华文学习平台</p>
+        <h1>读漫画，闯成语，<br><span>收集勇者金卡</span></h1>
+        <p>目前开放第47—70条成语。登录后，进度会安全保存，并可在不同设备继续学习。</p>
+        <div class="hero-stats">
+          <div><strong id="cardCount">0</strong><span>我的金卡</span></div>
+          <div><strong id="completeCount">0</strong><span>已完成练习</span></div>
+          <div><strong>24</strong><span>当前成语</span></div>
+        </div>
+      </div>
+      <img src="/assets/rewards/card-2.png" alt="南华熊太棒啦金卡">
+    </section>
+
+    <nav class="tabs" aria-label="主要功能">
+      <button class="tab active" data-view="learn">成语学习</button>
+      <button class="tab" data-view="cards">我的金卡</button>
+      <button class="tab" data-view="rank">排行榜</button>
+    </nav>
+
+    <section id="learnView" class="view">
+      <div class="section-head">
+        <div><p class="eyebrow">学习地图</p><h2>七个成语单元</h2></div>
+        <p>未上线单元会自动保留位置，日后补充内容时不必重做网页。</p>
+      </div>
+      <div id="groups" class="group-grid"></div>
+      <div class="section-head idiom-head">
+        <div><p class="eyebrow">第三单元 · 已开放</p><h2>第47—70条</h2></div>
+        <p>点击成语卡阅读漫画，再完成整组题目。</p>
+      </div>
+      <div id="idiomGrid" class="idiom-grid"><p class="loading">成语加载中……</p></div>
+    </section>
+
+    <section id="cardsView" class="view hidden">
+      <div class="section-head"><div><p class="eyebrow">个人收藏</p><h2>我的成语金卡</h2></div><p>只有首次完整挑战全部答对，才会获得该成语金卡。</p></div>
+      <div id="cardGrid" class="reward-grid"></div>
+    </section>
+
+    <section id="rankView" class="view hidden">
+      <div class="section-head"><div><p class="eyebrow">公平竞赛</p><h2>排行榜</h2></div><p>榜单只显示行政班与学号，不公开姓名。</p></div>
+      <div class="rank-controls">
+        <button class="chip active" data-scope="teaching">教学班榜</button>
+        <button class="chip" data-scope="admin">行政班榜</button>
+        <button class="chip" data-scope="course">同课程榜</button>
+      </div>
+      <div id="rankList" class="rank-list empty">登录后查看排行榜。</div>
+    </section>
+  </main>
+
+  <div id="loginModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <form id="loginForm" class="dialog">
+      <button class="close" type="button" data-close aria-label="关闭">×</button>
+      <p class="eyebrow">跨设备学习</p><h2 id="loginTitle">学生登录</h2>
+      <label>行政班<select id="adminClass" required><option value="">请选择</option></select></label>
+      <label>学号<input id="studentNumber" inputmode="numeric" maxlength="3" placeholder="例如：18" required></label>
+      <label>个人登录码<input id="loginCode" autocomplete="one-time-code" maxlength="8" placeholder="8位登录码" required></label>
+      <p id="loginError" class="error"></p>
+      <button class="button wide" type="submit">登录并继续学习</button>
+    </form>
+  </div>
+
+  <div id="readerModal" class="modal reader-modal hidden" role="dialog" aria-modal="true">
+    <div class="reader">
+      <button class="reader-close" type="button" data-close-reader>×</button>
+      <div class="reader-image"><img id="readerImage" alt=""></div>
+      <div class="reader-info">
+        <p id="readerNum" class="eyebrow"></p><h2 id="readerName"></h2><p id="readerPinyin" class="pinyin"></p>
+        <p id="readerExplain"></p><p id="readerExample" class="example"></p>
+        <button id="startQuiz" class="button wide">开始整组挑战</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="quizModal" class="modal hidden" role="dialog" aria-modal="true">
+    <form id="quizForm" class="dialog quiz-dialog">
+      <button class="close" type="button" data-close-quiz>×</button>
+      <p id="quizTag" class="eyebrow"></p><h2 id="quizTitle">成语挑战</h2>
+      <div id="questionList"></div>
+      <p id="quizError" class="error"></p>
+      <button class="button wide" type="submit">一次提交全部答案</button>
+    </form>
+  </div>
+
+  <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="dialog result-dialog">
+      <button class="close" type="button" data-close-result>×</button>
+      <div id="resultBody"></div>
+      <button class="button wide" type="button" data-close-result>返回成语图鉴</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

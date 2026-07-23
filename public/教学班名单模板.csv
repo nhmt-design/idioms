@@ -1,0 +1,5 @@
+admin_class,student_number,course_type,teaching_class
+101,01,HCL,101-HCL
+101,34,CL,101-103-CL-A
+102,35,CL,101-103-CL-A
+103,33,CL,101-103-CL-A

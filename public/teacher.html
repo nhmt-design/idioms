@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>教师管理 · 南华熊成语闯关</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+  <header class="topbar"><a class="brand" href="/">← 返回学生平台</a><span class="eyebrow">教师管理</span></header>
+  <main>
+    <section class="hero teacher-hero"><div><p class="eyebrow">仅供教师使用</p><h1>教学班名单导入</h1><p>支持高级华文整班及快捷华文跨行政班合班。名单会先在浏览器检查和预览，确认后才写入数据库。</p></div></section>
+    <section id="teacherLogin" class="dialog teacher-panel">
+      <p class="eyebrow">步骤一</p><h2>教师验证</h2>
+      <form id="teacherLoginForm"><label>教师密码<input id="teacherPassword" type="password" required></label><p id="teacherError" class="error"></p><button class="button wide">进入名单管理</button></form>
+    </section>
+    <section id="rosterPanel" class="hidden">
+      <div class="section-head"><div><p class="eyebrow">步骤二</p><h2>准备并检查CSV名单</h2></div><a class="button ghost" href="/教学班名单模板.csv" download>下载CSV模板</a></div>
+      <div class="dialog teacher-panel">
+        <p>CSV必须有四栏：<code>admin_class, student_number, course_type, teaching_class</code>。课程填写 <code>HCL</code> 或 <code>CL</code>。</p>
+        <label>选择CSV文件<input id="rosterFile" type="file" accept=".csv,text/csv"></label>
+        <p id="rosterError" class="error"></p>
+      </div>
+      <div id="previewPanel" class="hidden">
+        <div class="section-head"><div><p class="eyebrow">步骤三</p><h2>确认教学班预览</h2></div><p id="previewSummary"></p></div>
+        <div id="classPreview" class="group-grid"></div>
+        <button id="importBtn" class="button" style="margin-top:20px">确认导入并生成登录码</button>
+      </div>
+      <div id="downloadPanel" class="dialog teacher-panel hidden">
+        <p class="eyebrow">导入成功</p><h2 id="importSummary"></h2><p>请立即下载并妥善保存登录码名单。系统只保存加密后的登录码，之后无法从数据库还原原码。</p><button id="downloadCodes" class="button wide">下载学生登录码CSV</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/teacher.js"></script>
+</body>
+</html>
