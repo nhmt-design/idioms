@@ -18,7 +18,7 @@
 
 代码小白最稳定的部署方法是：
 
-1. 把本文件夹上传到你现有的GitHub仓库 `nhmt-design/idioms`。
+1. 把本 文件夹上传到你现有的GitHub仓库 `nhmt-design/idioms`。
 2. 在Netlify现有项目 `nhhs-idioms` 连接该GitHub仓库。
 3. Netlify会读取 `netlify.toml`，自动发布 `public`，并部署 `netlify/functions`。
 
