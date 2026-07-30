@@ -1,31 +1,46 @@
 <!doctype html>
 <html lang="zh-Hans">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>教师管理 · 南华熊成语闯关</title><link rel="stylesheet" href="/styles.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>教师管理 · 南华熊成语闯关</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
 <body>
-  <header class="topbar"><a class="brand" href="/">← 返回学生平台</a><span class="eyebrow">教师管理</span></header>
+  <header class="topbar">
+    <a class="brand" href="/">← 返回学生平台</a>
+    <div class="userbar"><span class="eyebrow">教师管理</span><button id="logoutBtn" class="button small ghost hidden" type="button">退出</button></div>
+  </header>
   <main>
-    <section class="hero teacher-hero"><div><p class="eyebrow">仅供教师使用</p><h1>教学班名单导入</h1><p>支持高级华文整班及快捷华文跨行政班合班。名单会先在浏览器检查和预览，确认后才写入数据库。</p></div></section>
+    <section class="hero teacher-hero"><div><p class="eyebrow">仅供教师使用</p><h1>学习数据与名单管理</h1><p>查看全部班级的学习进度、首次正确率和金卡记录，并安全导入学生名单。</p></div></section>
     <section id="teacherLogin" class="dialog teacher-panel">
-      <p class="eyebrow">步骤一</p><h2>教师验证</h2>
-      <form id="teacherLoginForm"><label>教师密码<input id="teacherPassword" type="password" required></label><p id="teacherError" class="error"></p><button class="button wide">进入名单管理</button></form>
+      <p class="eyebrow">教师验证</p><h2>登录教师平台</h2>
+      <form id="teacherLoginForm"><label>教师密码<input id="teacherPassword" type="password" autocomplete="current-password" required></label><p id="teacherError" class="error"></p><button class="button wide">进入教师平台</button></form>
     </section>
-    <section id="rosterPanel" class="hidden">
-      <div class="section-head"><div><p class="eyebrow">步骤二</p><h2>准备并检查CSV名单</h2></div><a class="button ghost" href="/教学班名单模板.csv" download>下载CSV模板</a></div>
-      <div class="dialog teacher-panel">
-        <p>CSV必须有四栏：<code>admin_class, student_number, course_type, teaching_class</code>。课程填写 <code>HCL</code> 或 <code>CL</code>。</p>
-        <label>选择CSV文件<input id="rosterFile" type="file" accept=".csv,text/csv"></label>
-        <p id="rosterError" class="error"></p>
-      </div>
-      <div id="previewPanel" class="hidden">
-        <div class="section-head"><div><p class="eyebrow">步骤三</p><h2>确认教学班预览</h2></div><p id="previewSummary"></p></div>
-        <div id="classPreview" class="group-grid"></div>
-        <button id="importBtn" class="button" style="margin-top:20px">确认导入并生成登录码</button>
-      </div>
-      <div id="downloadPanel" class="dialog teacher-panel hidden">
-        <p class="eyebrow">导入成功</p><h2 id="importSummary"></h2><p>请立即下载并妥善保存登录码名单。系统只保存加密后的登录码，之后无法从数据库还原原码。</p><button id="downloadCodes" class="button wide">下载学生登录码CSV</button>
-      </div>
+    <section id="teacherWorkspace" class="hidden">
+      <nav class="tabs teacher-tabs" aria-label="教师功能"><button class="tab active" data-panel="resultsPanel" type="button">学生成绩</button><button class="tab" data-panel="rosterPanel" type="button">名单管理</button></nav>
+      <section id="resultsPanel">
+        <div class="section-head"><div><p class="eyebrow">全部班级</p><h2>学生成绩总览</h2></div><div class="teacher-actions"><button id="refreshResults" class="button ghost" type="button">刷新数据</button><button id="exportResults" class="button" type="button">导出筛选结果 CSV</button></div></div>
+        <p id="resultsError" class="error"></p><div id="summaryCards" class="summary-grid" aria-live="polite"></div>
+        <div class="filter-bar">
+          <label>行政班<select id="adminClassFilter"><option value="">全部行政班</option></select></label>
+          <label>教学班<select id="teachingClassFilter"><option value="">全部教学班</option></select></label>
+          <label>课程<select id="courseFilter"><option value="">全部课程</option><option value="HCL">高级华文 HCL</option><option value="CL">快捷华文 CL</option></select></label>
+          <label>学习状态<select id="statusFilter"><option value="">全部状态</option><option value="normal">正常</option><option value="attention">需关注</option><option value="not-started">未开始</option></select></label>
+          <label class="search-filter">搜索学生<input id="studentSearch" type="search" placeholder="输入班级或学号"></label>
+        </div>
+        <p id="resultCount" class="table-caption"></p>
+        <div class="results-table-wrap"><table class="results-table"><thead><tr><th>行政班</th><th>学号</th><th>课程</th><th>教学班</th><th>已作答</th><th>已完成</th><th>首次全对率</th><th>金卡</th><th>作答次数</th><th>最近学习</th><th>状态</th><th></th></tr></thead><tbody id="studentResultsBody"></tbody></table></div>
+      </section>
+      <section id="rosterPanel" class="hidden">
+        <div class="section-head"><div><p class="eyebrow">步骤一</p><h2>准备并检查 CSV 名单</h2></div><a class="button ghost" href="/教学班名单模板.csv" download>下载 CSV 模板</a></div>
+        <div class="dialog teacher-panel"><p>CSV 必须有四栏：<code>admin_class, student_number, course_type, teaching_class</code>。课程填写 <code>HCL</code> 或 <code>CL</code>。</p><label>选择 CSV 文件<input id="rosterFile" type="file" accept=".csv,text/csv"></label><p id="rosterError" class="error"></p></div>
+        <div id="previewPanel" class="hidden"><div class="section-head"><div><p class="eyebrow">步骤二</p><h2>确认教学班预览</h2></div><p id="previewSummary"></p></div><div id="classPreview" class="group-grid"></div><button id="importBtn" class="button" type="button">确认导入并生成登录码</button></div>
+        <div id="downloadPanel" class="dialog teacher-panel hidden"><p class="eyebrow">导入成功</p><h2 id="importSummary"></h2><p>请立即下载并妥善保存登录码名单。系统只保存加密后的登录码，之后无法从数据库还原原码。</p><button id="downloadCodes" class="button wide" type="button">下载学生登录码 CSV</button></div>
+      </section>
     </section>
   </main>
+  <div id="studentDetailModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="studentDetailTitle"><div class="dialog detail-dialog"><button id="closeStudentDetail" class="close" type="button" aria-label="关闭">×</button><p class="eyebrow">学生个人详情</p><h2 id="studentDetailTitle"></h2><div id="studentDetailContent"></div></div></div>
   <script type="module" src="/teacher.js"></script>
 </body>
 </html>
