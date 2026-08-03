@@ -77,6 +77,8 @@ function openReader(num) {
   $("#readerPinyin").textContent = page.pinyin;
   $("#readerExplain").textContent = page.explain;
   $("#readerExample").textContent = `例句：${page.example}`;
+  $(".reader-image").scrollTop = 0;
+  $(".reader-info").scrollTop = 0;
   show("#readerModal");
 }
 function openQuiz() {
