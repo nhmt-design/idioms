@@ -25,6 +25,28 @@ const parseCsv = (text) => {
   if (!required.every((name) => headers.includes(name))) throw new Error(`CSV 标题必须是：${required.join(", ")}`);
   return lines.map((line) => Object.fromEntries(parseCsvLine(line).map((value, index) => [headers[index], value])));
 };
+const validateRoster = (rows) => {
+  const validClass = /^(10[1-8]|20[1-8])$/;
+  const seen = new Set(), errors = [];
+  const normalized = rows.map((raw, index) => {
+    const row = {
+      admin_class: String(raw.admin_class || "").trim(),
+      student_number: String(raw.student_number || "").trim().padStart(2, "0"),
+      course_type: String(raw.course_type || "").trim().toUpperCase(),
+      teaching_class: String(raw.teaching_class || "").trim()
+    };
+    const key = `${row.admin_class}-${row.student_number}`;
+    if (!validClass.test(row.admin_class)) errors.push(`第${index + 2}行：行政班不正确`);
+    if (!/^[0-9]{1,3}$/.test(row.student_number)) errors.push(`第${index + 2}行：学号不正确`);
+    if (!["HCL", "CL"].includes(row.course_type)) errors.push(`第${index + 2}行：课程必须是HCL或CL`);
+    if (!row.teaching_class) errors.push(`第${index + 2}行：教学班不能为空`);
+    if (seen.has(key)) errors.push(`第${index + 2}行：行政班与学号重复`);
+    seen.add(key);
+    return row;
+  });
+  if (errors.length) throw new Error(errors.slice(0, 20).join("\n"));
+  return normalized;
+};
 const api = async (path, body = {}) => {
   const response = await fetch(`/api/${path}`, {
     method: "POST",
@@ -139,7 +161,7 @@ $("#rosterFile").addEventListener("change", async (event) => {
   $("#rosterError").textContent = ""; $("#previewPanel").classList.add("hidden");
   try {
     if (!event.target.files[0]) return;
-    roster = parseCsv(await event.target.files[0].text()); if (!roster.length) throw new Error("CSV 内没有学生资料");
+    roster = validateRoster(parseCsv(await event.target.files[0].text())); if (!roster.length) throw new Error("CSV 内没有学生资料");
     const grouped = roster.reduce((map, row) => map.set(row.teaching_class, (map.get(row.teaching_class) || 0) + 1), new Map());
     $("#previewSummary").textContent = `共 ${roster.length} 名学生，${grouped.size} 个教学班`;
     $("#classPreview").innerHTML = [...grouped].map(([name, count]) => `<article class="group-card open"><strong>${escapeHtml(name)}</strong><span>教学班</span><b>${count} 人</b></article>`).join("");
@@ -149,10 +171,20 @@ $("#rosterFile").addEventListener("change", async (event) => {
 $("#importBtn").addEventListener("click", async () => {
   const button = $("#importBtn"); button.disabled = true; button.textContent = "正在安全导入……";
   try {
-    const result = await api("import-roster", { students: roster }); imported = result.students;
-    $("#importSummary").textContent = `已导入 ${result.count} 名学生`; $("#downloadPanel").classList.remove("hidden");
+    imported = []; $("#downloadPanel").classList.add("hidden");
+    const batches = Array.from({ length: Math.ceil(roster.length / 100) }, (_, index) => roster.slice(index * 100, (index + 1) * 100));
+    for (let index = 0; index < batches.length; index++) {
+      button.textContent = `正在导入第 ${index + 1}/${batches.length} 批……`;
+      const result = await api("import-roster", { students: batches[index] });
+      imported.push(...result.students);
+    }
+    $("#importSummary").textContent = `已导入 ${imported.length} 名学生`; $("#downloadPanel").classList.remove("hidden");
     $("#downloadPanel").scrollIntoView({ behavior: "smooth" }); await loadTeacherResults();
-  } catch (error) { $("#rosterError").textContent = error.message; }
+  } catch (error) {
+    $("#rosterError").textContent = imported.length
+      ? `导入在 ${imported.length} 名学生后中断。请重新点击导入；不要使用本次不完整的登录码。原因：${error.message}`
+      : error.message;
+  }
   finally { button.disabled = false; button.textContent = "确认导入并生成登录码"; }
 });
 $("#downloadCodes").addEventListener("click", () => {
