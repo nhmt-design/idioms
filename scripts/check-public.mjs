@@ -9,8 +9,12 @@ const data = JSON.parse(text);
 if (data.pages?.length !== 24) throw new Error("Expected 24 published idioms");
 for (const page of data.pages) {
   for (const kind of ["pages", "thumbs"]) {
-    if (!fs.existsSync(new URL(`../public/assets/chengyu/${kind}/${page.num}.jpg`, import.meta.url))) {
+    const image = new URL(`../public/assets/chengyu/${kind}/${page.num}.jpg`, import.meta.url);
+    if (!fs.existsSync(image)) {
       throw new Error(`Missing ${kind} image: ${page.num}`);
+    }
+    if (kind === "thumbs" && fs.statSync(image).size > 150_000) {
+      throw new Error(`Thumbnail is too large: ${page.num}`);
     }
   }
   if (!fs.existsSync(new URL(`../public/assets/rewards/${page.num}.jpg`, import.meta.url))) {

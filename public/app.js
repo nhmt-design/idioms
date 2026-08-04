@@ -33,7 +33,9 @@ function renderCards() {
   $("#cardGrid").innerHTML = state.data.pages.map((page) => {
     const unlocked = state.cards.has(page.num);
     return `<article class="reward-card ${unlocked ? "" : "locked"}" data-card="${page.num}">
-      <div class="reward-art"><img src="/assets/rewards/${page.num}.jpg" alt="${escapeHtml(page.id)}金卡"><i class="card-shine"></i></div>
+      <div class="reward-art">${unlocked
+        ? `<img src="/assets/rewards/${page.num}.jpg" alt="${escapeHtml(page.id)}金卡" loading="lazy" decoding="async"><i class="card-shine"></i>`
+        : '<div class="reward-placeholder" aria-label="尚未获得">★</div>'}</div>
       <p>${escapeHtml(page.id)}</p><span>NHHS №${String(page.num).padStart(3, "0")} · ${unlocked ? "首次全对" : "尚未获得"}</span>
       ${unlocked ? "" : '<div class="lock">🔒</div>'}</article>`;
   }).join("");
@@ -111,7 +113,13 @@ async function submitQuiz(event) {
       <p style="text-align:center;color:var(--muted)">${result.awarded ? "首次整组全对，金卡已存入收藏。" : result.first_attempt && !result.all_correct ? "这次不能获得金卡，但可以继续练习直到掌握。" : "练习进度已保存。"}</p>
       ${result.explanations.map((items, index) => `<div class="explanation"><strong>第${index + 1}题：</strong>${escapeHtml(items[result.correct_answers[index]])}</div>`).join("")}`;
     show("#resultModal");
-    await loadProgress();
+    if (result.attempt) {
+      state.attempts.set(result.attempt.idiom_num, result.attempt);
+      if (result.awarded) state.cards.add(result.attempt.idiom_num);
+      updateStats(); renderIdioms(); renderCards();
+    } else {
+      await loadProgress();
+    }
   } catch (error) {
     $("#quizError").textContent = error.message;
   } finally {

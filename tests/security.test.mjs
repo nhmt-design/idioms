@@ -21,3 +21,11 @@ test("seven ranges cover 1–138 without overlap", () => {
   assert.equal(nums.length, 138);
   assert.equal(new Set(nums).size, 138);
 });
+
+test("Cloudflare database migration preserves existing learning records", () => {
+  const sql = fs.readFileSync(new URL("../supabase/migrations/002_cloudflare_functions.sql", import.meta.url), "utf8").toLowerCase();
+  assert.equal(/\b(drop\s+table|truncate|delete\s+from)\b/u.test(sql), false);
+  assert.match(sql, /create or replace function public\.submit_idiom_attempt/u);
+  assert.match(sql, /create or replace function public\.get_teacher_results/u);
+  assert.match(sql, /to service_role/u);
+});

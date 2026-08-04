@@ -1,4 +1,10 @@
-# 南华熊成语闯关平台：Netlify Functions＋Supabase版
+# 南华熊成语闯关平台：Cloudflare Workers＋Supabase迁移版
+
+Cloudflare迁移与教师操作步骤请先阅读：
+
+- [`CLOUDFLARE_MIGRATION_GUIDE.md`](./CLOUDFLARE_MIGRATION_GUIDE.md)
+
+迁移期间原有Netlify配置与函数继续保留，作为回退方案；Cloudflare测试完成前不要删除旧站。
 
 ## 2026-07-23：24张金卡与漫画编号修正版
 
