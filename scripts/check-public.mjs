@@ -10,26 +10,23 @@ for (const forbidden of ['"correct"', '"why"', '"answer_key"']) {
 }
 
 const data = JSON.parse(text);
-const expectedNums = [
-  ...Array.from({ length: 23 }, (_, i) => i + 1),
-  ...Array.from({ length: 24 }, (_, i) => i + 47),
-];
+const expectedNums = Array.from({ length: 70 }, (_, i) => i + 1);
 
-if (data.pages?.length !== 47) {
-  throw new Error(`Expected 47 published idioms, found ${data.pages?.length ?? 0}`);
+if (data.pages?.length !== 70) {
+  throw new Error(`Expected 70 published idioms, found ${data.pages?.length ?? 0}`);
 }
 
 const nums = data.pages.map((page) => page.num);
 if (JSON.stringify(nums) !== JSON.stringify(expectedNums)) {
-  throw new Error("Published idiom numbers must be exactly 1–23 and 47–70, in order.");
+  throw new Error("Published idiom numbers must be exactly 1–70, in order.");
 }
 
 const questionCount = data.pages.reduce(
   (sum, page) => sum + (Array.isArray(page.questions) ? page.questions.length : 0),
   0
 );
-if (questionCount !== 94) {
-  throw new Error(`Expected 94 public questions, found ${questionCount}`);
+if (questionCount !== 140) {
+  throw new Error(`Expected 140 public questions, found ${questionCount}`);
 }
 
 for (const page of data.pages) {
@@ -59,4 +56,4 @@ for (const page of data.pages) {
   }
 }
 
-console.log("Public content check passed: 47 idioms, 94 questions, no answer keys.");
+console.log("Public content check passed: 70 idioms, 140 questions, no answer keys.");
