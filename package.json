@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/check-public.mjs",
+    "build": "node scripts/apply-unit1.mjs && node scripts/check-public.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:load": "node scripts/load-test-worker.mjs",
     "test:live-load": "node scripts/live-load-test.mjs",
