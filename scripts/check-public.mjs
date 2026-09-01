@@ -34,6 +34,56 @@ for (const page of data.pages) {
     throw new Error(`Idiom ${page.num} must contain exactly 2 questions`);
   }
 
+  if (page.num >= 71 && page.num <= 138) {
+    const expectedTypes = ["scene", "misuse"];
+    const actualTypes = page.questions.map((question) => question.type);
+    const hanCharacters = page.id.match(/\p{Script=Han}/gu) || [];
+    const cardCharacters = (page.characters || []).map((character) => character.char);
+    const bannedText = [
+      "形容天气忽然变冷",
+      "形容东西的数量很多",
+      "这个情境正好说明",
+      "这里只是在介绍天气",
+      "这里只是在计算数量"
+    ];
+
+    if (JSON.stringify(actualTypes) !== JSON.stringify(expectedTypes)) {
+      throw new Error(`Idiom ${page.num} must use scene and misuse question types.`);
+    }
+
+    if (/是什么意思|哪一句正确表达/u.test(page.questions.map((question) => question.stem).join(" "))) {
+      throw new Error(`Idiom ${page.num} still contains a recall-only question.`);
+    }
+
+    for (const question of page.questions) {
+      if (!Array.isArray(question.options) || question.options.length !== 3) {
+        throw new Error(`Idiom ${page.num} ${question.id} must contain exactly 3 options.`);
+      }
+      if (new Set(question.options).size !== 3) {
+        throw new Error(`Idiom ${page.num} ${question.id} contains duplicate options.`);
+      }
+      if (bannedText.some((phrase) => question.options.some((option) => option.includes(phrase)))) {
+        throw new Error(`Idiom ${page.num} ${question.id} contains a meaningless distractor.`);
+      }
+    }
+
+    if (JSON.stringify(cardCharacters) !== JSON.stringify(hanCharacters)) {
+      throw new Error(`Idiom ${page.num} character cards do not match the idiom text.`);
+    }
+
+    if (page.characters.some((character) => !character.gloss || !character.icon)) {
+      throw new Error(`Idiom ${page.num} has an incomplete illustrated character card.`);
+    }
+
+    if (!page.english || /[\u3400-\u9fff]/u.test(page.english)) {
+      throw new Error(`Idiom ${page.num} needs an English explanation.`);
+    }
+
+    if (page.example.startsWith("理解「")) {
+      throw new Error(`Idiom ${page.num} still contains a generic example sentence.`);
+    }
+  }
+
   for (const kind of ["pages", "thumbs"]) {
     const image = new URL(
       `../public/assets/chengyu/${kind}/${page.num}.jpg`,
@@ -56,4 +106,4 @@ for (const page of data.pages) {
   }
 }
 
-console.log("Public content check passed: 138 idioms, 276 questions, no answer keys.");
+console.log("Public content check passed: 138 idioms, 276 questions, audited cards, no answer keys.");
