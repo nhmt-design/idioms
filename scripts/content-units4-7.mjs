@@ -2,6 +2,24 @@ const cards = (items) => items.map(([char, gloss, icon]) => ({ char, gloss, icon
 
 const question = (id, type, stem, options) => ({ id, type, stem, options });
 
+export const goldCardThemes = [
+  { id: "cool", label: "酷毙了" },
+  { id: "impressive", label: "厉害哟" },
+  { id: "great", label: "太棒啦" },
+  { id: "keep-going", label: "继续冲" },
+  { id: "smart-learner", label: "真会学" }
+];
+
+const goldCard = (num) => {
+  const theme = goldCardThemes[(num - 71) % goldCardThemes.length];
+
+  return {
+    theme: theme.id,
+    label: theme.label,
+    asset: `assets/rewards/${num}.jpg`
+  };
+};
+
 const item = ({ num, id, pinyin, explain, example, english, characters, q1, q2 }) => ({
   num,
   id,
@@ -12,6 +30,7 @@ const item = ({ num, id, pinyin, explain, example, english, characters, q1, q2 }
   characters: cards(characters),
   image: `assets/chengyu/pages/${num}.jpg`,
   thumb: `assets/chengyu/thumbs/${num}.jpg`,
+  goldCard: goldCard(num),
   group: null,
   questions: [
     question("Q1", "scene", q1[0], q1[1]),

@@ -5,7 +5,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT.parent / "generated_images"
 PAGES = ROOT / "public/assets/chengyu/pages"
 THUMBS = ROOT / "public/assets/chengyu/thumbs"
-REWARDS = ROOT / "public/assets/rewards"
 
 def choose_source(num: int) -> Path:
     matches = sorted(SOURCE.glob(f"{num}_*.png"))
@@ -33,6 +32,5 @@ for number in range(71, 139):
         rgb = original.convert("RGB")
         rgb.save(PAGES / f"{number}.jpg", "JPEG", quality=88, optimize=True, progressive=True)
         contain(rgb, (360, 450)).save(THUMBS / f"{number}.jpg", "JPEG", quality=82, optimize=True, progressive=True)
-        contain(rgb, (900, 1200)).save(REWARDS / f"{number}.jpg", "JPEG", quality=84, optimize=True, progressive=True)
 
-print("Prepared page, thumbnail, and reward images for idioms 71–138.")
+print("Prepared comic pages and thumbnails for idioms 71–138; approved gold cards were left untouched.")
