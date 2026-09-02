@@ -59,6 +59,19 @@ const escapeHtml = (value) =>
       })[char]
   );
 
+function shuffledOptions(options, shouldShuffle) {
+  const indexed = options.map((text, originalIndex) => ({ text, originalIndex }));
+
+  if (!shouldShuffle) return indexed;
+
+  for (let index = indexed.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [indexed[index], indexed[swapIndex]] = [indexed[swapIndex], indexed[index]];
+  }
+
+  return indexed;
+}
+
 function getActiveGroup() {
   return (
     state.data?.groups.find(
@@ -387,6 +400,50 @@ function openReader(num) {
   $("#readerExample").textContent =
     `例句：${page.example}`;
 
+  const hasLearningCard =
+    Array.isArray(page.characters) &&
+    page.characters.length > 0 &&
+    Boolean(page.english);
+
+  const replacesLegacyCard =
+    hasLearningCard &&
+    page.num >= 71 &&
+    page.num <= 138 &&
+    page.num !== 89;
+
+  const comicFrame = $("#readerComicFrame");
+  comicFrame.classList.toggle(
+    "card-replaced",
+    replacesLegacyCard
+  );
+  comicFrame.style.setProperty(
+    "--comic-crop-y",
+    page.num === 88 ? "1110" : "1220"
+  );
+
+  $("#readerLearningCard").classList.toggle(
+    "hidden",
+    !replacesLegacyCard
+  );
+
+  $("#readerCharacters").innerHTML = replacesLegacyCard
+    ? page.characters
+        .map(
+          (character) => `
+            <article class="character-card">
+              <strong>${escapeHtml(character.char)}</strong>
+              <span class="character-icon" aria-hidden="true">${escapeHtml(character.icon)}</span>
+              <span>${escapeHtml(character.gloss)}</span>
+            </article>
+          `
+        )
+        .join("")
+    : "";
+
+  $("#readerEnglish").textContent = replacesLegacyCard
+    ? page.english
+    : "";
+
   $(".reader-image").scrollTop = 0;
   $(".reader-info").scrollTop = 0;
 
@@ -421,17 +478,20 @@ function openQuiz() {
               ${escapeHtml(question.stem)}
             </h3>
 
-            ${question.options
+            ${shuffledOptions(
+              question.options,
+              page.num >= 71 && page.num <= 138
+            )
               .map(
-                (option, oIndex) => `
+                ({ text, originalIndex }) => `
                   <label class="option">
                     <input
                       type="radio"
                       name="q${qIndex}"
-                      value="${oIndex}"
+                      value="${originalIndex}"
                     >
                     <span>
-                      ${escapeHtml(option)}
+                      ${escapeHtml(text)}
                     </span>
                   </label>
                 `
@@ -553,11 +613,10 @@ async function submitQuiz(event) {
               </strong>
 
               ${escapeHtml(
-                items[
-                  result.correct_answers[
-                    index
-                  ]
-                ]
+                state.current.num >= 71 &&
+                state.current.num <= 138
+                  ? `正确答案：${state.current.questions[index].options[result.correct_answers[index]]}`
+                  : items[result.correct_answers[index]]
               )}
             </div>
           `
