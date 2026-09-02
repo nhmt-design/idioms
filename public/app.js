@@ -59,6 +59,12 @@ const escapeHtml = (value) =>
       })[char]
   );
 
+const rewardAsset = (page) =>
+  `/${page.goldCard?.asset || `assets/rewards/${page.num}.jpg`}`;
+
+const rewardAlt = (page) =>
+  `${page.id}${page.goldCard?.label ? ` · ${page.goldCard.label}` : ""}金卡`;
+
 function shuffledOptions(options, shouldShuffle) {
   const indexed = options.map((text, originalIndex) => ({ text, originalIndex }));
 
@@ -223,8 +229,8 @@ function renderCards() {
               unlocked
                 ? `
                   <img
-                    src="/assets/rewards/${page.num}.jpg"
-                    alt="${escapeHtml(page.id)}金卡"
+                    src="${rewardAsset(page)}"
+                    alt="${escapeHtml(rewardAlt(page))}"
                     loading="lazy"
                     decoding="async"
                   >
@@ -570,8 +576,8 @@ async function submitQuiz(event) {
 
             <img
               class="result-card"
-              src="/assets/rewards/${state.current.num}.jpg"
-              alt="${escapeHtml(state.current.id)}金卡"
+              src="${rewardAsset(state.current)}"
+              alt="${escapeHtml(rewardAlt(state.current))}"
             >
           `
           : ""

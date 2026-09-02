@@ -25,6 +25,15 @@ for (const page of units4to7Content) {
     throw new Error(`Idiom ${page.num} must contain exactly two questions.`);
   }
 
+  if (
+    !page.goldCard ||
+    !page.goldCard.theme ||
+    !page.goldCard.label ||
+    page.goldCard.asset !== `assets/rewards/${page.num}.jpg`
+  ) {
+    throw new Error(`Idiom ${page.num} needs an individual gold-card assignment.`);
+  }
+
   for (const question of page.questions) {
     if (!Array.isArray(question.options) || question.options.length !== 3) {
       throw new Error(`Idiom ${page.num} ${question.id} must contain three options.`);

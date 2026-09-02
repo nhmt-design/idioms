@@ -2324,6 +2324,11 @@
       ],
       "image": "assets/chengyu/pages/71.jpg",
       "thumb": "assets/chengyu/thumbs/71.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/71.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2379,6 +2384,11 @@
       ],
       "image": "assets/chengyu/pages/72.jpg",
       "thumb": "assets/chengyu/thumbs/72.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/72.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2434,6 +2444,11 @@
       ],
       "image": "assets/chengyu/pages/73.jpg",
       "thumb": "assets/chengyu/thumbs/73.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/73.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2489,6 +2504,11 @@
       ],
       "image": "assets/chengyu/pages/74.jpg",
       "thumb": "assets/chengyu/thumbs/74.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/74.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2544,6 +2564,11 @@
       ],
       "image": "assets/chengyu/pages/75.jpg",
       "thumb": "assets/chengyu/thumbs/75.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/75.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2599,6 +2624,11 @@
       ],
       "image": "assets/chengyu/pages/76.jpg",
       "thumb": "assets/chengyu/thumbs/76.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/76.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2654,6 +2684,11 @@
       ],
       "image": "assets/chengyu/pages/77.jpg",
       "thumb": "assets/chengyu/thumbs/77.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/77.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2709,6 +2744,11 @@
       ],
       "image": "assets/chengyu/pages/78.jpg",
       "thumb": "assets/chengyu/thumbs/78.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/78.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2764,6 +2804,11 @@
       ],
       "image": "assets/chengyu/pages/79.jpg",
       "thumb": "assets/chengyu/thumbs/79.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/79.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2819,6 +2864,11 @@
       ],
       "image": "assets/chengyu/pages/80.jpg",
       "thumb": "assets/chengyu/thumbs/80.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/80.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2874,6 +2924,11 @@
       ],
       "image": "assets/chengyu/pages/81.jpg",
       "thumb": "assets/chengyu/thumbs/81.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/81.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2929,6 +2984,11 @@
       ],
       "image": "assets/chengyu/pages/82.jpg",
       "thumb": "assets/chengyu/thumbs/82.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/82.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -2984,6 +3044,11 @@
       ],
       "image": "assets/chengyu/pages/83.jpg",
       "thumb": "assets/chengyu/thumbs/83.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/83.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3039,6 +3104,11 @@
       ],
       "image": "assets/chengyu/pages/84.jpg",
       "thumb": "assets/chengyu/thumbs/84.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/84.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3094,6 +3164,11 @@
       ],
       "image": "assets/chengyu/pages/85.jpg",
       "thumb": "assets/chengyu/thumbs/85.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/85.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3149,6 +3224,11 @@
       ],
       "image": "assets/chengyu/pages/86.jpg",
       "thumb": "assets/chengyu/thumbs/86.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/86.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3204,6 +3284,11 @@
       ],
       "image": "assets/chengyu/pages/87.jpg",
       "thumb": "assets/chengyu/thumbs/87.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/87.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3279,6 +3364,11 @@
       ],
       "image": "assets/chengyu/pages/88.jpg",
       "thumb": "assets/chengyu/thumbs/88.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/88.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3334,6 +3424,11 @@
       ],
       "image": "assets/chengyu/pages/89.jpg",
       "thumb": "assets/chengyu/thumbs/89.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/89.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3389,6 +3484,11 @@
       ],
       "image": "assets/chengyu/pages/90.jpg",
       "thumb": "assets/chengyu/thumbs/90.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/90.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3444,6 +3544,11 @@
       ],
       "image": "assets/chengyu/pages/91.jpg",
       "thumb": "assets/chengyu/thumbs/91.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/91.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3499,6 +3604,11 @@
       ],
       "image": "assets/chengyu/pages/92.jpg",
       "thumb": "assets/chengyu/thumbs/92.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/92.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3554,6 +3664,11 @@
       ],
       "image": "assets/chengyu/pages/93.jpg",
       "thumb": "assets/chengyu/thumbs/93.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/93.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3609,6 +3724,11 @@
       ],
       "image": "assets/chengyu/pages/94.jpg",
       "thumb": "assets/chengyu/thumbs/94.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/94.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3664,6 +3784,11 @@
       ],
       "image": "assets/chengyu/pages/95.jpg",
       "thumb": "assets/chengyu/thumbs/95.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/95.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3719,6 +3844,11 @@
       ],
       "image": "assets/chengyu/pages/96.jpg",
       "thumb": "assets/chengyu/thumbs/96.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/96.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3774,6 +3904,11 @@
       ],
       "image": "assets/chengyu/pages/97.jpg",
       "thumb": "assets/chengyu/thumbs/97.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/97.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3829,6 +3964,11 @@
       ],
       "image": "assets/chengyu/pages/98.jpg",
       "thumb": "assets/chengyu/thumbs/98.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/98.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3884,6 +4024,11 @@
       ],
       "image": "assets/chengyu/pages/99.jpg",
       "thumb": "assets/chengyu/thumbs/99.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/99.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3939,6 +4084,11 @@
       ],
       "image": "assets/chengyu/pages/100.jpg",
       "thumb": "assets/chengyu/thumbs/100.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/100.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -3994,6 +4144,11 @@
       ],
       "image": "assets/chengyu/pages/101.jpg",
       "thumb": "assets/chengyu/thumbs/101.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/101.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4049,6 +4204,11 @@
       ],
       "image": "assets/chengyu/pages/102.jpg",
       "thumb": "assets/chengyu/thumbs/102.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/102.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4104,6 +4264,11 @@
       ],
       "image": "assets/chengyu/pages/103.jpg",
       "thumb": "assets/chengyu/thumbs/103.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/103.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4159,6 +4324,11 @@
       ],
       "image": "assets/chengyu/pages/104.jpg",
       "thumb": "assets/chengyu/thumbs/104.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/104.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4214,6 +4384,11 @@
       ],
       "image": "assets/chengyu/pages/105.jpg",
       "thumb": "assets/chengyu/thumbs/105.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/105.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4269,6 +4444,11 @@
       ],
       "image": "assets/chengyu/pages/106.jpg",
       "thumb": "assets/chengyu/thumbs/106.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/106.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4324,6 +4504,11 @@
       ],
       "image": "assets/chengyu/pages/107.jpg",
       "thumb": "assets/chengyu/thumbs/107.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/107.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4379,6 +4564,11 @@
       ],
       "image": "assets/chengyu/pages/108.jpg",
       "thumb": "assets/chengyu/thumbs/108.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/108.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4434,6 +4624,11 @@
       ],
       "image": "assets/chengyu/pages/109.jpg",
       "thumb": "assets/chengyu/thumbs/109.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/109.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4489,6 +4684,11 @@
       ],
       "image": "assets/chengyu/pages/110.jpg",
       "thumb": "assets/chengyu/thumbs/110.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/110.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4544,6 +4744,11 @@
       ],
       "image": "assets/chengyu/pages/111.jpg",
       "thumb": "assets/chengyu/thumbs/111.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/111.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4599,6 +4804,11 @@
       ],
       "image": "assets/chengyu/pages/112.jpg",
       "thumb": "assets/chengyu/thumbs/112.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/112.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4654,6 +4864,11 @@
       ],
       "image": "assets/chengyu/pages/113.jpg",
       "thumb": "assets/chengyu/thumbs/113.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/113.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4709,6 +4924,11 @@
       ],
       "image": "assets/chengyu/pages/114.jpg",
       "thumb": "assets/chengyu/thumbs/114.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/114.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4764,6 +4984,11 @@
       ],
       "image": "assets/chengyu/pages/115.jpg",
       "thumb": "assets/chengyu/thumbs/115.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/115.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4819,6 +5044,11 @@
       ],
       "image": "assets/chengyu/pages/116.jpg",
       "thumb": "assets/chengyu/thumbs/116.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/116.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4874,6 +5104,11 @@
       ],
       "image": "assets/chengyu/pages/117.jpg",
       "thumb": "assets/chengyu/thumbs/117.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/117.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4929,6 +5164,11 @@
       ],
       "image": "assets/chengyu/pages/118.jpg",
       "thumb": "assets/chengyu/thumbs/118.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/118.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -4984,6 +5224,11 @@
       ],
       "image": "assets/chengyu/pages/119.jpg",
       "thumb": "assets/chengyu/thumbs/119.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/119.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5039,6 +5284,11 @@
       ],
       "image": "assets/chengyu/pages/120.jpg",
       "thumb": "assets/chengyu/thumbs/120.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/120.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5094,6 +5344,11 @@
       ],
       "image": "assets/chengyu/pages/121.jpg",
       "thumb": "assets/chengyu/thumbs/121.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/121.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5149,6 +5404,11 @@
       ],
       "image": "assets/chengyu/pages/122.jpg",
       "thumb": "assets/chengyu/thumbs/122.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/122.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5204,6 +5464,11 @@
       ],
       "image": "assets/chengyu/pages/123.jpg",
       "thumb": "assets/chengyu/thumbs/123.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/123.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5259,6 +5524,11 @@
       ],
       "image": "assets/chengyu/pages/124.jpg",
       "thumb": "assets/chengyu/thumbs/124.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/124.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5314,6 +5584,11 @@
       ],
       "image": "assets/chengyu/pages/125.jpg",
       "thumb": "assets/chengyu/thumbs/125.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/125.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5369,6 +5644,11 @@
       ],
       "image": "assets/chengyu/pages/126.jpg",
       "thumb": "assets/chengyu/thumbs/126.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/126.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5424,6 +5704,11 @@
       ],
       "image": "assets/chengyu/pages/127.jpg",
       "thumb": "assets/chengyu/thumbs/127.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/127.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5479,6 +5764,11 @@
       ],
       "image": "assets/chengyu/pages/128.jpg",
       "thumb": "assets/chengyu/thumbs/128.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/128.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5534,6 +5824,11 @@
       ],
       "image": "assets/chengyu/pages/129.jpg",
       "thumb": "assets/chengyu/thumbs/129.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/129.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5589,6 +5884,11 @@
       ],
       "image": "assets/chengyu/pages/130.jpg",
       "thumb": "assets/chengyu/thumbs/130.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/130.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5644,6 +5944,11 @@
       ],
       "image": "assets/chengyu/pages/131.jpg",
       "thumb": "assets/chengyu/thumbs/131.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/131.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5699,6 +6004,11 @@
       ],
       "image": "assets/chengyu/pages/132.jpg",
       "thumb": "assets/chengyu/thumbs/132.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/132.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5774,6 +6084,11 @@
       ],
       "image": "assets/chengyu/pages/133.jpg",
       "thumb": "assets/chengyu/thumbs/133.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/133.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5829,6 +6144,11 @@
       ],
       "image": "assets/chengyu/pages/134.jpg",
       "thumb": "assets/chengyu/thumbs/134.jpg",
+      "goldCard": {
+        "theme": "keep-going",
+        "label": "继续冲",
+        "asset": "assets/rewards/134.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5884,6 +6204,11 @@
       ],
       "image": "assets/chengyu/pages/135.jpg",
       "thumb": "assets/chengyu/thumbs/135.jpg",
+      "goldCard": {
+        "theme": "smart-learner",
+        "label": "真会学",
+        "asset": "assets/rewards/135.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5939,6 +6264,11 @@
       ],
       "image": "assets/chengyu/pages/136.jpg",
       "thumb": "assets/chengyu/thumbs/136.jpg",
+      "goldCard": {
+        "theme": "cool",
+        "label": "酷毙了",
+        "asset": "assets/rewards/136.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -5994,6 +6324,11 @@
       ],
       "image": "assets/chengyu/pages/137.jpg",
       "thumb": "assets/chengyu/thumbs/137.jpg",
+      "goldCard": {
+        "theme": "impressive",
+        "label": "厉害哟",
+        "asset": "assets/rewards/137.jpg"
+      },
       "group": null,
       "questions": [
         {
@@ -6049,6 +6384,11 @@
       ],
       "image": "assets/chengyu/pages/138.jpg",
       "thumb": "assets/chengyu/thumbs/138.jpg",
+      "goldCard": {
+        "theme": "great",
+        "label": "太棒啦",
+        "asset": "assets/rewards/138.jpg"
+      },
       "group": null,
       "questions": [
         {
